@@ -1111,6 +1111,148 @@ button {
   background: #202337;
 }
 
+.art-lantern {
+  background:
+    radial-gradient(ellipse at 54% 34%, rgb(255 217 146 / 68%), transparent 18%),
+    linear-gradient(145deg, #7a6651, #38565d 48%, #171d26);
+}
+
+.art-lantern .shape-front {
+  background: linear-gradient(140deg, #d3a66d, #443b37 72%);
+}
+
+.art-rail {
+  background:
+    radial-gradient(ellipse at 72% 24%, #e5b984 0 4%, transparent 24%),
+    linear-gradient(145deg, #855f58, #37354a 48%, #171b27);
+}
+
+.art-rail .shape-back {
+  width: 110%;
+  height: 45%;
+  right: -4%;
+  bottom: 18%;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(155deg, #826b70, #343142);
+  clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 100%);
+}
+
+.art-ember {
+  background:
+    radial-gradient(ellipse at 50% 38%, #f0c184 0 3%, transparent 18%),
+    linear-gradient(145deg, #ad7657, #704959 46%, #201d2c);
+}
+
+.art-ember .shape-mid {
+  background: radial-gradient(circle at 50% 40%, #e9b971, #be6b58 58%, transparent 70%);
+}
+
+.art-orchard {
+  background:
+    radial-gradient(ellipse at 68% 28%, rgb(235 205 148 / 74%), transparent 20%),
+    linear-gradient(145deg, #8a8061, #52634f 46%, #202b2b);
+}
+
+.art-orchard .shape-back {
+  width: 22%;
+  height: 70%;
+  right: 39%;
+  bottom: 16%;
+  border: 0;
+  border-radius: 45% 45% 0 0;
+  background: linear-gradient(90deg, #594c3c, #a18b5d, #54483c);
+}
+
+.art-copper {
+  background:
+    radial-gradient(ellipse at 73% 28%, #ecc38b 0 5%, transparent 22%),
+    linear-gradient(145deg, #9f614e, #59434b 49%, #20222e);
+}
+
+.art-copper .shape-mid {
+  background: linear-gradient(145deg, #d19a68, #87564f 60%, #393443);
+  border-radius: 50% 50% 8% 8%;
+}
+
+.art-rain {
+  background:
+    repeating-linear-gradient(105deg, transparent 0 14px, rgb(220 221 223 / 12%) 15px 16px),
+    linear-gradient(145deg, #6b8290, #444d61 48%, #1c202e);
+}
+
+.art-rain .shape-back {
+  width: 36%;
+  height: 57%;
+  top: 10%;
+  right: 30%;
+  bottom: auto;
+  background: linear-gradient(145deg, #d1b585, #957e70);
+  border: 0;
+  border-radius: 50%;
+}
+
+.art-archive {
+  background:
+    radial-gradient(ellipse at 50% 26%, rgb(229 191 127 / 52%), transparent 20%),
+    linear-gradient(145deg, #806b53, #4d4850 48%, #20212b);
+}
+
+.art-archive .shape-mid {
+  width: 34%;
+  height: 75%;
+  top: 26%;
+  right: 33%;
+  background: repeating-linear-gradient(0deg, #674f43 0 9px, #bd9466 10px 12px);
+  border-radius: 3px;
+}
+
+.art-wildflower {
+  background:
+    radial-gradient(ellipse at 42% 33%, rgb(231 189 163 / 65%), transparent 23%),
+    linear-gradient(145deg, #8c6c70, #5c6263 48%, #24252d);
+}
+
+.art-wildflower .shape-back {
+  width: 36%;
+  height: 56%;
+  right: 31%;
+  bottom: 10%;
+  border-color: rgb(240 216 188 / 55%);
+  border-radius: 49% 51% 54% 46%;
+}
+
+.art-signal {
+  background:
+    radial-gradient(ellipse at 55% 32%, rgb(150 217 207 / 48%), transparent 19%),
+    linear-gradient(145deg, #315e66, #394b5d 48%, #181e2b);
+}
+
+.art-signal .shape-back {
+  width: 70%;
+  height: 70%;
+  top: 6%;
+  right: 14%;
+  bottom: auto;
+  border-color: rgb(191 231 208 / 40%);
+  border-radius: 50%;
+}
+
+.art-moonwake {
+  background:
+    radial-gradient(ellipse at 67% 26%, #e4d2aa 0 5%, transparent 19%),
+    linear-gradient(150deg, #656d82, #373d59 48%, #181b29);
+}
+
+.art-moonwake .shape-mid {
+  width: 28%;
+  height: 61%;
+  top: 31%;
+  right: 33%;
+  background: linear-gradient(90deg, #687584, #c4b99d 50%, #596576);
+  border-radius: 48% 48% 12% 12%;
+}
+
 .card-play {
   position: absolute;
   top: 36%;
@@ -1491,6 +1633,103 @@ button {
   margin: 15px 0 0;
   color: #87858f;
   font-size: 9px;
+}
+
+.story-preview-backdrop {
+  position: fixed;
+  z-index: 11;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 22px;
+  background: rgb(3 4 7 / 84%);
+  backdrop-filter: blur(9px);
+  animation: backdrop-in 160ms ease-out;
+}
+
+.story-preview-dialog {
+  position: relative;
+  width: min(100%, 720px);
+  max-height: calc(100vh - 44px);
+  overflow-y: auto;
+  background: #15161c;
+  border: 1px solid #393740;
+  border-radius: 10px;
+  box-shadow: 0 25px 100px rgb(0 0 0 / 64%);
+  animation: dialog-in 200ms ease-out;
+}
+
+.preview-art {
+  height: 235px;
+}
+
+.preview-art .art-copy {
+  display: none;
+}
+
+.preview-art::after {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  background: linear-gradient(0deg, #15161c 0%, rgb(21 22 28 / 18%) 67%, transparent);
+  content: "";
+}
+
+.story-preview-content {
+  position: relative;
+  z-index: 5;
+  max-width: 630px;
+  margin-top: -37px;
+  padding: 0 36px 31px;
+}
+
+.story-preview-content h2 {
+  margin: 0;
+  color: #fff;
+  font-family: Manrope, sans-serif;
+  font-size: clamp(29px, 5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -1.6px;
+}
+
+.preview-scene-label {
+  margin: 17px 0 10px;
+  color: #d8bb7e;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+
+.preview-scene-label span {
+  margin-inline: 4px;
+  color: #706c68;
+}
+
+.preview-opening {
+  margin: 0;
+  padding: 16px 18px;
+  color: #f1e8d7;
+  background: linear-gradient(110deg, rgb(230 189 120 / 8%), rgb(255 255 255 / 2%));
+  border-left: 2px solid #c9a96b;
+  font-family: Manrope, Georgia, serif;
+  font-size: clamp(14px, 2vw, 17px);
+  line-height: 1.8;
+}
+
+.preview-synopsis {
+  margin: 14px 0 0;
+  color: #aaa8b0;
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+.story-preview-content .detail-actions {
+  margin-top: 18px;
+}
+
+.story-preview-content .demo-disclaimer {
+  margin-top: 13px;
 }
 
 .toast {
@@ -1875,6 +2114,31 @@ button {
 
   .detail-description {
     font-size: 11px;
+  }
+
+  .story-preview-backdrop {
+    padding: 12px;
+  }
+
+  .story-preview-dialog {
+    max-height: calc(100vh - 24px);
+  }
+
+  .preview-art {
+    height: 175px;
+  }
+
+  .story-preview-content {
+    margin-top: -30px;
+    padding: 0 19px 22px;
+  }
+
+  .story-preview-content h2 {
+    font-size: 30px;
+  }
+
+  .preview-opening {
+    padding: 13px 14px;
   }
 }
 

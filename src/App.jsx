@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowDown,
   ArrowRight,
+  BookOpen,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -25,6 +26,7 @@ const SHOWS = [
     runtime: "6 episodes",
     rating: "A",
     description: "On a quiet island, the tide carries pieces of tomorrow onto the shore. A lighthouse keeper and a cartographer begin mapping what should not yet exist.",
+    opening: "At dawn, Mara finds a glass marble in the tideline. Inside it, a tiny lighthouse beam circles over a map of the island—and points to a place that will not exist until tomorrow.",
     palette: "tide",
     artwork: "tide",
     label: "AFTERGLOW ORIGINAL",
@@ -38,6 +40,7 @@ const SHOWS = [
     runtime: "8 episodes",
     rating: "A",
     description: "The last residents of a drifting hotel keep its rooms warm for guests who may never arrive. Then one night, every doorbell rings at once.",
+    opening: "At 11:59, every bell in the hotel rings together. Ivo checks the guest book: every room is empty, but a fresh signature is drying beneath tomorrow's date.",
     palette: "orbit",
     artwork: "orbit",
     label: "NEW SERIES",
@@ -50,6 +53,7 @@ const SHOWS = [
     runtime: "1h 48m",
     rating: "A",
     description: "A young field biologist follows a trail of glowing spores into a forest that seems to remember everyone who has ever walked beneath its canopy.",
+    opening: "The spores light up one by one, making a path through the trees. Nia recognizes the last footprint in the moss: her own, though she has never been here before.",
     palette: "moss",
     artwork: "moss",
     label: "VIEWER FAVORITE",
@@ -62,6 +66,7 @@ const SHOWS = [
     runtime: "7 episodes",
     rating: "A",
     description: "A late-night radio host starts receiving dedications from a town that disappeared from the map forty years ago.",
+    opening: "The caller asks for a song that has not been written yet. When June puts on the headphones, she hears her own voice quietly humming along.",
     palette: "static",
     artwork: "static",
     label: "A QUIET KIND OF MAGIC",
@@ -74,6 +79,7 @@ const SHOWS = [
     runtime: "5 episodes",
     rating: "A",
     description: "Four strangers inherit a tiny after-hours café and discover that closing time is when the neighborhood gets interesting.",
+    opening: "The café's new owners turn the sign to CLOSED. A queue immediately forms outside, and every person is carrying a pie they insist they did not bake.",
     palette: "blue",
     artwork: "blue",
     label: "JUST ADDED",
@@ -86,6 +92,7 @@ const SHOWS = [
     runtime: "1h 36m",
     rating: "A",
     description: "Every guest at a desert roadside motel checks out with a different memory of the same missing night.",
+    opening: "At the front desk, the bell rings although nobody is there. In the guest book, a room key has been checked out in Lena's handwriting—dated twenty years ago.",
     palette: "paper",
     artwork: "paper",
     label: "MIDNIGHT PICK",
@@ -98,6 +105,7 @@ const SHOWS = [
     runtime: "6 episodes",
     rating: "A",
     description: "A courier crosses a floating archipelago to deliver a letter with no address and a postmark dated a century from now.",
+    opening: "The envelope has no name, no address, and a stamp from a country that sank before the islands began to float. Still, the compass points east.",
     palette: "wild",
     artwork: "wild",
     label: "A NEW HORIZON",
@@ -110,6 +118,7 @@ const SHOWS = [
     runtime: "1h 52m",
     rating: "A",
     description: "In a city where memories grow on trees, a gardener finds a seed that remembers a life no one has lived.",
+    opening: "A silver seed drops into Arun's palm. It is warm, and for one impossible second he remembers a birthday party for a daughter he has never had.",
     palette: "echo",
     artwork: "echo",
     label: "AFTERGLOW FILM",
@@ -122,6 +131,7 @@ const SHOWS = [
     runtime: "8 episodes",
     rating: "A",
     description: "Three night-shift workers at an all-night flower shop help the city say what it cannot say during daylight.",
+    opening: "Just before midnight, a stranger asks for a bouquet that says I'm sorry without saying why. The three florists each choose a different flower.",
     palette: "hours",
     artwork: "hours",
     label: "FROM THE COLLECTION",
@@ -134,6 +144,7 @@ const SHOWS = [
     runtime: "1h 41m",
     rating: "A",
     description: "Two siblings follow a hand-drawn map through a mountain range where the clouds settle low enough to walk through.",
+    opening: "The map ends at a cloudbank with a small pencilled door drawn in its center. Their grandmother's handwriting underneath says: knock twice.",
     palette: "cloud",
     artwork: "cloud",
     label: "WIDE OPEN SPACES",
@@ -146,6 +157,7 @@ const SHOWS = [
     runtime: "6 episodes",
     rating: "A",
     description: "When the old lighthouse goes dark, its keeper receives letters from the sea, each one signed in his own handwriting.",
+    opening: "The first letter arrives inside a sealed bottle, perfectly dry. It is addressed to Elias, written in his hand, and begins: when the light goes out, do not relight it.",
     palette: "last",
     artwork: "last",
     label: "AN AFTERGLOW MYSTERY",
@@ -158,9 +170,130 @@ const SHOWS = [
     runtime: "1h 55m",
     rating: "A",
     description: "An amateur astronomer discovers a constellation that only appears above one small neighborhood—and it is changing shape.",
+    opening: "The new star appears between two familiar ones. Through the telescope, it looks less like a star than a lit window—and someone inside is waving.",
     palette: "velvet",
     artwork: "velvet",
     label: "LOOK UP",
+  },
+  {
+    id: "lantern-atlas",
+    title: "The Lantern Atlas",
+    genre: "Adventure",
+    year: 2026,
+    runtime: "7 episodes",
+    rating: "A",
+    description: "A young mapmaker discovers that the lanterns along an old coastal road reveal a new path each time the fog rolls in.",
+    opening: "The first lantern is unlit, but its glass glows with a tiny moving coastline. When Elian unfolds his map, the same shore appears in the blank margin.",
+    artwork: "lantern",
+    label: "NEW ADVENTURE",
+  },
+  {
+    id: "mile-zero",
+    title: "Mile Zero",
+    genre: "Adventure",
+    year: 2026,
+    runtime: "1h 49m",
+    rating: "A",
+    description: "Two former friends take a train to the end of its line, finding unexpected stops on a route that should be abandoned.",
+    opening: "The train has no timetable, yet it stops at a station called Mile Zero. On the platform, a familiar voice calls their names from a town neither remembers.",
+    artwork: "rail",
+    label: "TAKE THE LONG WAY",
+  },
+  {
+    id: "the-kindness-club",
+    title: "The Kindness Club",
+    genre: "Comedy",
+    year: 2025,
+    runtime: "6 episodes",
+    rating: "A",
+    description: "A neighborhood's overly competitive kindness club tries to outdo itself, one well-meaning and increasingly chaotic favor at a time.",
+    opening: "The club's first rule is that favors must stay anonymous. Their first favor is a banner that reads, 'A SECRET PERSON THINKS YOU'RE GREAT,' signed by all twelve members.",
+    artwork: "ember",
+    label: "A GOOD TIME",
+  },
+  {
+    id: "table-for-two",
+    title: "Table for Two",
+    genre: "Comedy",
+    year: 2026,
+    runtime: "1h 42m",
+    rating: "A",
+    description: "A food critic and a home cook accidentally swap dinner reservations and spend a night defending meals neither of them ordered.",
+    opening: "At table seven, each diner insists the other ordered the strange blue soup. The waiter returns with a note from the chef: please stop reviewing it out loud.",
+    artwork: "copper",
+    label: "JUST ADDED",
+  },
+  {
+    id: "perfectly-ordinary",
+    title: "Perfectly Ordinary",
+    genre: "Comedy",
+    year: 2024,
+    runtime: "5 episodes",
+    rating: "A",
+    description: "A small town holds an annual festival celebrating how uneventful it is—until the new organizer accidentally makes it extraordinary.",
+    opening: "The festival's headline event is watching paint dry. This year, the paint is a different color every minute, and the mayor is pretending it was planned.",
+    artwork: "rain",
+    label: "A LITTLE LAUGH",
+  },
+  {
+    id: "borrowed-sunday",
+    title: "Borrowed Sunday",
+    genre: "Drama",
+    year: 2025,
+    runtime: "1h 51m",
+    rating: "A",
+    description: "After finding a box of unsent postcards, two sisters retrace their mother's quiet journey through the places she never got to leave.",
+    opening: "The postcards are all addressed but never stamped. On the back of the first, their mother's handwriting reads: I thought we had more Sundays.",
+    artwork: "orchard",
+    label: "A STORY TO KEEP",
+  },
+  {
+    id: "the-blue-between",
+    title: "The Blue Between",
+    genre: "Drama",
+    year: 2026,
+    runtime: "6 episodes",
+    rating: "A",
+    description: "A ceramics teacher and a returning student rebuild a community studio, learning what can be mended and what needs room to change.",
+    opening: "The bowl breaks cleanly in two. Instead of reaching for the glue, Mina sets both pieces on the table and asks what they might become apart.",
+    artwork: "wildflower",
+    label: "A NEW BEGINNING",
+  },
+  {
+    id: "the-quiet-floor",
+    title: "The Quiet Floor",
+    genre: "Mystery",
+    year: 2024,
+    runtime: "7 episodes",
+    rating: "A",
+    description: "An elevator in an old city hotel stops at a floor missing from every blueprint, where a different guest is waiting each night.",
+    opening: "The elevator doors open between floors. A woman in a yellow coat steps inside, looks at the empty panel, and presses a button that isn't there.",
+    artwork: "archive",
+    label: "A NEW MYSTERY",
+  },
+  {
+    id: "signal-in-the-reeds",
+    title: "Signal in the Reeds",
+    genre: "Sci-Fi",
+    year: 2025,
+    runtime: "8 episodes",
+    rating: "A",
+    description: "A radio astronomer hears a repeating signal from a marshland observatory—and realizes it is answering the questions she has not asked yet.",
+    opening: "The receiver clicks three times. Before she can write down the signal, the printer produces a neat line of text: YOU ARE NOT ALONE OUT HERE.",
+    artwork: "signal",
+    label: "A DISTANT SIGNAL",
+  },
+  {
+    id: "moonwake",
+    title: "Moonwake",
+    genre: "Sci-Fi",
+    year: 2026,
+    runtime: "1h 57m",
+    rating: "A",
+    description: "On a quiet lunar harbor, a maintenance pilot finds a trail of footprints leading away from the station and toward the sunrise.",
+    opening: "The footprints begin at the airlock and stop at the edge of the habitat's light. Beyond them, the dust is perfectly smooth—and something is making it shimmer.",
+    artwork: "moonwake",
+    label: "AFTERGLOW ORIGINAL",
   },
 ];
 
@@ -186,7 +319,7 @@ function PosterArt({ show, className = "" }) {
   );
 }
 
-function DetailDialog({ show, saved, onClose, onToggleSave }) {
+function DetailDialog({ show, saved, onClose, onExplore, onToggleSave }) {
   useEffect(() => {
     function closeOnEscape(event) {
       if (event.key === "Escape") onClose();
@@ -220,8 +353,8 @@ function DetailDialog({ show, saved, onClose, onToggleSave }) {
           <p className="detail-description">{show.description}</p>
           <p className="detail-genre">Genre <span>{show.genre}</span></p>
           <div className="detail-actions">
-            <button className="watch-button" type="button" onClick={onClose}>
-              <Play size={17} fill="currentColor" /> Start exploring
+            <button className="watch-button" type="button" onClick={() => onExplore(show)}>
+              <BookOpen size={17} /> Read opening scene
             </button>
             <button className={`save-button${saved ? " is-saved" : ""}`} type="button" onClick={() => onToggleSave(show.id)}>
               {saved ? <Check size={18} /> : <Plus size={19} />}
@@ -235,8 +368,53 @@ function DetailDialog({ show, saved, onClose, onToggleSave }) {
   );
 }
 
+function StoryPreview({ show, saved, onClose, onBack, onToggleSave }) {
+  useEffect(() => {
+    function closeOnEscape(event) {
+      if (event.key === "Escape") onClose();
+    }
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [onClose]);
+
+  return (
+    <div className="story-preview-backdrop" onMouseDown={onClose}>
+      <section
+        className="story-preview-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="preview-title"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <PosterArt show={show} className="preview-art" />
+        <button className="detail-close" type="button" aria-label="Close story preview" onClick={onClose}>
+          <X size={20} />
+        </button>
+        <div className="story-preview-content">
+          <p className="detail-eyebrow"><Sparkles size={13} /> ORIGINAL STORY PREVIEW · {show.genre.toUpperCase()}</p>
+          <h2 id="preview-title">{show.title}</h2>
+          <p className="preview-scene-label">THE OPENING SCENE <span>·</span> {show.year}</p>
+          <p className="preview-opening">{show.opening}</p>
+          <p className="preview-synopsis">{show.description}</p>
+          <div className="detail-actions">
+            <button className="save-button" type="button" onClick={onBack}>
+              <Info size={16} /> Story details
+            </button>
+            <button className={`save-button${saved ? " is-saved" : ""}`} type="button" onClick={() => onToggleSave(show.id)}>
+              {saved ? <Check size={18} /> : <Plus size={19} />}
+              <span>{saved ? "In My List" : "Add to My List"}</span>
+            </button>
+          </div>
+          <p className="demo-disclaimer">A short, original written preview created for this interface demo.</p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 function App() {
   const [selectedShow, setSelectedShow] = useState(null);
+  const [previewShow, setPreviewShow] = useState(null);
   const [genre, setGenre] = useState("All stories");
   const [query, setQuery] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
@@ -287,6 +465,11 @@ function App() {
       wasSaved ? current.filter((item) => item !== id) : [...current, id]
     ));
     setToast(wasSaved ? "Removed from My List" : "Added to My List");
+  }
+
+  function openStoryPreview(show) {
+    setSelectedShow(null);
+    setPreviewShow(show);
   }
 
   function scrollRow(genreName, direction) {
@@ -360,7 +543,7 @@ function App() {
                 The tide carries pieces of tomorrow onto a quiet island. One lighthouse keeper is about to learn that some things arrive before they are lost.
               </p>
               <div className="hero-actions">
-                <button className="hero-play" type="button" onClick={() => setSelectedShow(heroShow)}>
+                <button className="hero-play" type="button" onClick={() => openStoryPreview(heroShow)}>
                   <Play size={17} fill="currentColor" /> Explore story
                 </button>
                 <button className="hero-more" type="button" onClick={() => setSelectedShow(heroShow)}>
@@ -485,6 +668,16 @@ function App() {
           show={selectedShow}
           saved={savedIds.includes(selectedShow.id)}
           onClose={() => setSelectedShow(null)}
+          onExplore={openStoryPreview}
+          onToggleSave={toggleSaved}
+        />
+      )}
+      {previewShow && (
+        <StoryPreview
+          show={previewShow}
+          saved={savedIds.includes(previewShow.id)}
+          onClose={() => setPreviewShow(null)}
+          onBack={() => { setPreviewShow(null); setSelectedShow(previewShow); }}
           onToggleSave={toggleSaved}
         />
       )}
